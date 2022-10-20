@@ -36,31 +36,19 @@ options.add_argument("--window-size=1920x1080")
 options.add_argument("--disable-features=VizDisplayCompositor")
 
 
-def delete_selenium_log():
-    if os.path.exists('selenium.log'):
-        os.remove('selenium.log')
 
-
-def show_selenium_log():
-    if os.path.exists('selenium.log'):
-        with open('selenium.log') as f:
-            content = f.read()
-            st.code(content)
-
-CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
 
 
 #driver = webdriver.Chrome(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()),options=chrome_options)
 #driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options)
-#driver = webdriver.Chrome(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
+driver = webdriver.Chrome(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
 #driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options)
 #driver = webdriver.Chrome(
         #executable_path="/Users/akjasim/chromedriver/chromedriver")
 
-with webdriver.Chrome(options=options, service_log_path='selenium.log') as driver:
-       url = 'https://www.linkedin.com/jobs/search?keywords=Data%20Scientist&location=India'
+ url = 'https://www.linkedin.com/jobs/search?keywords=Data%20Scientist&location=India'
 #driver = webdriver.Chrome(r"C:\Users\User\Desktop\PROGRAM_FILES\chromedriver.exe")
-       driver.get(url)
+driver.get(url)
 
 
 driver.maximize_window() 
