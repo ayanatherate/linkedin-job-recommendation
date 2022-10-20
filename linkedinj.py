@@ -46,7 +46,7 @@ driver = webdriver.Chrome(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).i
 #driver = webdriver.Chrome(
         #executable_path="/Users/akjasim/chromedriver/chromedriver")
 
- url = 'https://www.linkedin.com/jobs/search?keywords=Data%20Scientist&location=India'
+url = 'https://www.linkedin.com/jobs/search?keywords=Data%20Scientist&location=India'
 #driver = webdriver.Chrome(r"C:\Users\User\Desktop\PROGRAM_FILES\chromedriver.exe")
 driver.get(url)
 
