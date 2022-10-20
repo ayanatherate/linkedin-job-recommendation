@@ -3,4 +3,4 @@ selenium
 bs4
 streamlit
 spacy
-webdriver-manager
+webdriver_manager
