@@ -1,1 +1,1 @@
-web: python linkedinj.py
+web: gunicorn linkedinj.py
