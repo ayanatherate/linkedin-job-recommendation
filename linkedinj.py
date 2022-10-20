@@ -26,14 +26,48 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.by import By
 
-options = Options()
-options.add_argument("--headless")
-options.add_argument("--no-sandbox")
-options.add_argument("--disable-dev-shm-usage")
-options.add_argument("--disable-gpu")
-options.add_argument("--disable-features=NetworkService")
-options.add_argument("--window-size=1920x1080")
-options.add_argument("--disable-features=VizDisplayCompositor")
+
+
+
+from selenium import webdriver
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.common.by import By
+from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.firefox.service import Service
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+from webdriver_manager.firefox import GeckoDriverManager
+
+URL = ""
+TIMEOUT = 20
+
+st.title("Test Selenium")
+
+firefoxOptions = Options()
+firefoxOptions.add_argument("--headless")
+service = Service(GeckoDriverManager().install())
+driver = webdriver.Firefox(
+    options=firefoxOptions,
+    service=service,
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -41,7 +75,7 @@ options.add_argument("--disable-features=VizDisplayCompositor")
 
 #driver = webdriver.Chrome(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()),options=chrome_options)
 #driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options)
-driver = webdriver.Chrome(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
+#driver = webdriver.Chrome(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
 #driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options)
 #driver = webdriver.Chrome(
         #executable_path="/Users/akjasim/chromedriver/chromedriver")
