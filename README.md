@@ -1,7 +1,7 @@
 # Scraper returns a csv containing the most matched jobs according to skills (Count Vectorizer + Cosine Similarity), sorted by date of job posting. 
 
 Run program locally:
-```
+
 
 
 App demo:
