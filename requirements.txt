@@ -1,6 +1,6 @@
 pandas
-selenium==3.141.0
+selenium
 bs4
-streamlit
+webdriver_manager
 spacy
-
+sklearn
