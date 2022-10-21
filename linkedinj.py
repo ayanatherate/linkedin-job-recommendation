@@ -16,8 +16,7 @@ import spacy
 
 
 
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install())
-
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 url = 'https://www.linkedin.com/jobs/search?keywords=Data%20Scientist&location=India'
 #driver = webdriver.Chrome(r"C:\Users\User\Desktop\PROGRAM_FILES\chromedriver.exe")
 driver.get(url)
