@@ -1,9 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Oct 20 22:47:43 2022
 
-@author: Ayan
-"""
 
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -12,7 +7,6 @@ import time
 import pandas as pd
 from bs4 import BeautifulSoup
 from selenium.webdriver.common.by import By
-import streamlit as st
 import os
 import re
 import math
@@ -20,6 +14,7 @@ from sklearn.feature_extraction.text import CountVectorizer as cv
 cv=cv()
 from sklearn.metrics.pairwise import cosine_similarity as cosim
 
+#taking user inputs
 Role=str(input('Enter job role: '))
 Country=str(input('Enter country: '))
 no_jobs=int(input('Enter no of jobs to scrape:'))
@@ -28,6 +23,7 @@ skill_user=list(map(str, input('Enter your skills, space separated (ex: Python n
 
 url = f'https://www.linkedin.com/jobs/search?keywords={Role}&location={Country}'
 
+#preventing chrome browser from popping up while scraping
 chrome_options = webdriver.ChromeOptions()
 #chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
 chrome_options.add_argument("--headless")
@@ -44,7 +40,7 @@ driver.maximize_window()
 driver.switch_to.window(driver.current_window_handle)
 driver.implicitly_wait(10)
 
-
+#enabling scrolling till page limit
 i = 2
 while i <= math.floor(0.07*(no_jobs//10)): 
     driver.execute_script('window.scrollTo(0, document.body.scrollHeight);')
@@ -64,6 +60,7 @@ soup = BeautifulSoup(src, 'lxml')
 
 job_links=[]
 
+#scraping job names, roles, location
 names=soup.find_all('h4',{'class':'base-search-card__subtitle'})
 roles=soup.find_all('span',{'class':'sr-only'})
 location=soup.find_all('span',{'class':'job-search-card__location'})
@@ -80,7 +77,7 @@ names=[i.get_text() for i in names]
 roles=[i.get_text() for i in roles]
 location=[i.get_text() for i in location]
 print(names)
-st.write(names)
+
 
 
 import spacy
@@ -88,7 +85,7 @@ import spacy
 # load pre-trained model
 nlp = spacy.load('en_core_web_sm')
 
-
+#function to extract skills from job description corpus
 def extract_skills(resume_text):
     nlp_text = nlp(resume_text)
 
@@ -116,6 +113,7 @@ def extract_skills(resume_text):
     
     return [i.capitalize() for i in set([i.lower() for i in skillset])]
 
+#function to scrape educational qualification requirements from job description corpus
 def extract_edu_qualf(x):
     find=['Bachelor of Engineering','Master of Engineering','bachelor of technology','master of technology','BTech','MTech','Bsc','Msc'
           'Bachelor of Business Administration','Master of Business Administration','bba','mba'
@@ -157,6 +155,8 @@ skill_list=[]
 skill_scores=[]
 edu_qualf=[]
 
+#visits each job url scraped from main page and scrapes job description,
+# compares cosine similarity score with user's skills
 for link in job_links:
     
     if link!='n':
@@ -214,10 +214,11 @@ for link in job_links:
         skill_list.append('None')
         post_time.append('None')
 print()        
-import pandas as pd
 
+#saves to dataframe
 data_jobs=pd.DataFrame(list(zip(names,roles,location,post_time,job_links,jd,skill_list,edu_qualf,skill_scores)),columns=['Company','Role','Location','Job Post Time','LinkedIN job link','Description','Skills Needed','Qualif Requirement found','Skill Match(%)'])
 
+#data cleaning
 def removen(x):
     import re
     x=re.sub('\n',' ',x)
@@ -228,6 +229,12 @@ data_jobs['Role']=data_jobs['Role'].apply(lambda x: removen(x))
 data_jobs['Location']=data_jobs['Location'].apply(lambda x: removen(x))
 
 def matchtime(x):
+    
+    """
+    ranks (assigns a number) to jobs
+    according to time (of job posting) for final sorting
+
+    """
     x=x.split(' ')
     
     rank=0
@@ -263,6 +270,7 @@ def matchtime(x):
 data_jobs['rank']=data_jobs['Job Post Time'].apply(lambda x: matchtime(x))
 print(data_jobs)
 
+#sorting
 data_jobs.sort_values(by=['Skill Match(%)'],ascending=False,inplace=True)
 data_jobs.sort_values(by=['rank'],ascending=True,inplace=True)
 
