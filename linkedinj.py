@@ -1,9 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Oct 20 22:47:43 2022
 
-@author: User
-"""
 
 
 from selenium import webdriver
@@ -18,7 +13,8 @@ import streamlit
 import spacy
 
 
-
+ CHROMEDRIVER_PATH = "/app/.chromedriver/bin/chromedriver"
+    
 chrome_options = webdriver.ChromeOptions()
 chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
 chrome_options.add_argument("--headless")
