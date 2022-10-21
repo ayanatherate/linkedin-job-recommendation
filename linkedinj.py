@@ -23,7 +23,7 @@ from sklearn.metrics.pairwise import cosine_similarity as cosim
 Role=str(input('Enter job role: '))
 Country=str(input('Enter country: '))
 no_jobs=int(input('Enter no of jobs to scrape:'))
-skill_user=list(map(str, input('Enter skills: ').split(' ')))   
+skill_user=list(map(str, input('Enter your skills, space separated (ex: Python numpy pandas): ').split(' ')))   
 #print(skill_user)
 
 url = f'https://www.linkedin.com/jobs/search?keywords={Role}&location={Country}'
@@ -216,7 +216,7 @@ for link in job_links:
 print()        
 import pandas as pd
 
-data_jobs=pd.DataFrame(list(zip(names,roles,location,post_time,job_links,jd,skill_list,edu_qualf,skill_scores)),columns=['Company','Role','Location','Job Post Time','LinkedIN job link','Description','Skills Needed','Qualif found','Skill Match(%)'])
+data_jobs=pd.DataFrame(list(zip(names,roles,location,post_time,job_links,jd,skill_list,edu_qualf,skill_scores)),columns=['Company','Role','Location','Job Post Time','LinkedIN job link','Description','Skills Needed','Qualif Requirement found','Skill Match(%)'])
 
 def removen(x):
     import re
@@ -263,9 +263,9 @@ def matchtime(x):
 data_jobs['rank']=data_jobs['Job Post Time'].apply(lambda x: matchtime(x))
 print(data_jobs)
 
-
 data_jobs.sort_values(by=['Skill Match(%)'],ascending=False,inplace=True)
 data_jobs.sort_values(by=['rank'],ascending=True,inplace=True)
+
 data_jobs.reset_index(drop=True,inplace=True)
 data_jobs.drop(['rank'],axis=1,inplace=True)
 
@@ -274,7 +274,8 @@ print()
 print()
 print()
 print()
+print(f"Your average skill match with the jobs:{sum(data_jobs['Skill Match(%)'])/len(data_jobs)}%")
+
 print()
 print('Task Finished. Open your Downloads folder to find a csv named "saved_scraped_jobs" ')
 data_jobs.to_csv('../Downloads/saved_scraped_jobs.csv')
-        
