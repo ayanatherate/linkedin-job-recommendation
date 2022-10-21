@@ -13,7 +13,7 @@ import streamlit
 import spacy
 
 
- CHROMEDRIVER_PATH = "/app/.chromedriver/bin/chromedriver"
+CHROMEDRIVER_PATH = "/app/.chromedriver/bin/chromedriver"
     
 chrome_options = webdriver.ChromeOptions()
 chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
