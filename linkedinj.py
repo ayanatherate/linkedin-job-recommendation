@@ -24,7 +24,7 @@ Role=str(input('Enter job role: '))
 Country=str(input('Enter country: '))
 no_jobs=int(input('Enter no of jobs to scrape:'))
 skill_user=list(map(str, input('Enter skills: ').split(' ')))   
-print(skill_user)
+#print(skill_user)
 
 url = f'https://www.linkedin.com/jobs/search?keywords={Role}&location={Country}'
 
@@ -180,7 +180,7 @@ for link in job_links:
             str_skills+=i+','+' '
         skill_list.append(str_skills)
         
-        print(str_skills)
+        #print(str_skills)
         
         for i in skill_user:
             str_user_skills+=i+','+' '
@@ -197,7 +197,7 @@ for link in job_links:
         score=cosim(cv_,cv_user)[0][0]
         skill_scores.append(score)
         
-        print(str_skills)
+        #print(str_skills)
         jd.append(jd0)
         
         postedtimepath= 'html/body/main/section/div/section[2]/div/div/div/h4/div[2]/span'
@@ -269,5 +269,12 @@ data_jobs.sort_values(by=['rank'],ascending=True,inplace=True)
 data_jobs.reset_index(drop=True,inplace=True)
 data_jobs.drop(['rank'],axis=1,inplace=True)
 
-data_jobs.to_csv('saved_scraped_jobs.csv')
+print()
+print()
+print()
+print()
+print()
+print()
+print('Task Finished. Open your Downloads folder to find a csv named "saved_scraped_jobs" ')
+data_jobs.to_csv('../Downloads/saved_scraped_jobs.csv')
         
