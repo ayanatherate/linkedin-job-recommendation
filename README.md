@@ -9,7 +9,9 @@ Run program locally:
 
 <img width="676" alt="image" src="https://user-images.githubusercontent.com/59755186/197277105-b078c6a2-974e-4c65-a9ee-23189d9bd367.png">
 <br>
-<img width="662" alt="image" src="https://user-images.githubusercontent.com/59755186/197277195-dabc01c4-847b-42a1-8d8a-1056758a4dfb.png">
+<img width="673" alt="image" src="https://user-images.githubusercontent.com/59755186/197283946-86cbefd7-b272-46b2-b4c2-13c9d80cfe4b.png">
+
 <br>
 <h2>Returns:</h2>
-<img width="757" alt="image" src="https://user-images.githubusercontent.com/59755186/197277417-64258992-635a-487b-b20e-5cc8f2a46869.png">
+<img width="755" alt="image" src="https://user-images.githubusercontent.com/59755186/197284236-6fbd6164-5867-4543-aab9-bb6e33fc4d2e.png">
+
