@@ -6,8 +6,15 @@
 <p1> Highest Potential Match with skills--->2 </p1>
 
 <br>
-Run program locally:
+<h2>Run locally on your machine:</h2>
 
+```
+git clone https://github.com/ayanatherate/findmyjobbot.git
+cd findmyjobbot
+pip install -r requirements.txt
+python linkedinj.py
+```
+<br>
 
 
 <h2>App demo:</h2>
