@@ -1,4 +1,4 @@
-<h2> Scraper returns a csv containing the most matched jobs according to skills (Count Vectorizer + Cosine Similarity), sorted by the most recent date of job posting. 
+<h2> Bot returns a csv containing the most matched jobs according to skills (Count Vectorizer + Cosine Similarity), sorted by the most recent date of job posting. 
 </h2>
 
 <h3> Sorted by: </h3>
