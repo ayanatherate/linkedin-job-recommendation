@@ -1,8 +1,8 @@
 <h2> Scraper returns a csv containing the most matched jobs according to skills (Count Vectorizer + Cosine Similarity), sorted by the most recent date of job posting. 
 </h2>
-<br>
+
 <h3> Sorted by: </h3>
-<p1> Job Posting Date--> 1(latest)</p1>
+<p1> Job Posting Date--> 1(latest)</p1><br>
 <p1> Highest Potential Match with skills--->2 </p1>
 
 <br>
