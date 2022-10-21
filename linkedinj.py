@@ -10,6 +10,7 @@ from selenium.webdriver.common.by import By
 import os
 import re
 import math
+import spacy
 from sklearn.feature_extraction.text import CountVectorizer as cv
 cv=cv()
 from sklearn.metrics.pairwise import cosine_similarity as cosim
@@ -80,7 +81,7 @@ print(names)
 
 
 
-import spacy
+
 
 # load pre-trained model
 nlp = spacy.load('en_core_web_sm')
