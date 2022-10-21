@@ -1,4 +1,4 @@
-# Scraper returns a csv containing the most matched jobs according to skills (Count Vectorizer + Cosine Similarity), sorted by date of job posting. 
+<h2> Scraper returns a csv containing the most matched jobs according to skills (Count Vectorizer + Cosine Similarity), sorted by date of job posting. </h2>
 
 Run program locally:
 
