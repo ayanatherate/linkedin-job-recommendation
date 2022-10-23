@@ -1,6 +1,6 @@
-<h2> Bot returns a csv containing the most matched jobs according to skills (Count Vectorizer + Cosine Similarity), sorted by the most recent date of job posting. 
-</h2>
+<h2> Intuition </h2>
 
+<h3> Keeping track of the latest openings for a particular role and location might be gruesome. As also, manually reading long JD's to find out whether the skillset/experience required matches your expectations can also add more to the platter. Thus built a bot which automates this entire process, it returns  a csv containing the most matched jobs according to skills (Count Vectorizer + Cosine Similarity), sorted by the most recent date of job posting. </h3>
 <h3> Sorted by: </h3>
 <p1> Job Posting Date--> 1(latest)</p1><br>
 <p1> Highest Potential Match with skills--->2 </p1>
