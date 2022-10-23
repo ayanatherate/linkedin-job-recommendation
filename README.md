@@ -18,7 +18,7 @@ python linkedinj.py
 
 
 
-<h2> App Demo: </h2>
+<h2> Demo: </h2>
 
 <img width="676" alt="image" src="https://user-images.githubusercontent.com/59755186/197277105-b078c6a2-974e-4c65-a9ee-23189d9bd367.png">
 <br>
@@ -27,6 +27,7 @@ python linkedinj.py
 
 <br>
 <h2>Csv returned:</h2>
-<img width="757" alt="image" src="https://user-images.githubusercontent.com/59755186/197377696-b79c5355-d906-4a3c-8ad7-3f96c47616d4.png">
+<img width="758" alt="image" src="https://user-images.githubusercontent.com/59755186/197381899-f15cda41-5ee5-410d-a006-3ff624b96871.png">
+
 
 
