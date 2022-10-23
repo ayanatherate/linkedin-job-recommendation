@@ -27,5 +27,6 @@ python linkedinj.py
 
 <br>
 <h2>Csv returned:</h2>
-<img width="755" alt="image" src="https://user-images.githubusercontent.com/59755186/197284236-6fbd6164-5867-4543-aab9-bb6e33fc4d2e.png">
+<img width="757" alt="image" src="https://user-images.githubusercontent.com/59755186/197377696-b79c5355-d906-4a3c-8ad7-3f96c47616d4.png">
+
 
