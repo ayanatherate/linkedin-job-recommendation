@@ -1,5 +1,4 @@
 
-
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
@@ -10,7 +9,6 @@ from selenium.webdriver.common.by import By
 import os
 import re
 import math
-import spacy
 from sklearn.feature_extraction.text import CountVectorizer as cv
 cv=cv()
 from sklearn.metrics.pairwise import cosine_similarity as cosim
@@ -81,7 +79,7 @@ print(names)
 
 
 
-
+import spacy
 
 # load pre-trained model
 nlp = spacy.load('en_core_web_sm')
@@ -196,7 +194,7 @@ for link in job_links:
         
         
         score=cosim(cv_,cv_user)[0][0]
-        skill_scores.append(score)
+        skill_scores.append(round((100*score),2))
         
         #print(str_skills)
         jd.append(jd0)
@@ -283,7 +281,7 @@ print()
 print()
 print()
 print()
-print(f"Your average skill match with the jobs:{sum(data_jobs['Skill Match(%)'])/len(data_jobs)}%")
+print(f"On an average, your skills matched with:{sum(data_jobs['Skill Match(%)'])/len(data_jobs)} % of all Skill requirements of jobs in this list.")
 
 print()
 print('Task Finished. Open your Downloads folder to find a csv named "saved_scraped_jobs" ')
