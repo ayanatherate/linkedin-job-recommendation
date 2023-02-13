@@ -1,5 +1,6 @@
 
 from selenium import webdriver
+#selenium is used to automate web browsers
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 import time
