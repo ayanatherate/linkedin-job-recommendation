@@ -4,3 +4,5 @@ bs4
 webdriver_manager
 spacy
 sklearn
+lxml
+scikit-learn
