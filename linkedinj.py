@@ -121,28 +121,29 @@ def extract_edu_qualf(x):
           'mcom','phd']
     
     for i in find:
-        pattern=i.lower()
-        x=x.replace('.','')
-        truth=re.findall(pattern,x.lower())
-        if truth:
-            if pattern=='bachelor of Engineering':
-                return 'btech'
-            elif pattern=='master of Engineering':
-                return 'mtech'
-            elif pattern=='bachelor of technology':
-                return 'btech'
-            elif pattern=='master of technology':
-                return 'mtech'
-            elif pattern=='Bachelor of Business Administration':
-                return 'bba'
-            elif pattern=='Master of Business Administration':
-                return 'mba'
-            elif pattern=='bachelor of computer applications':
-                return 'bca'
-            elif pattern=='master of computer applications':
-                return 'mca'
-            else:
+        pattern = i.lower()
+        x = x.replace('.', '')
+        if pattern == 'bachelor of engineering':
+            return 'btech'
+        elif pattern == 'master of engineering':
+            return 'mtech'
+        elif pattern == 'bachelor of technology':
+            return 'btech'
+        elif pattern == 'master of technology':
+            return 'mtech'
+        elif pattern == 'bachelor of business administration':
+            return 'bba'
+        elif pattern == 'master of business administration':
+            return 'mba'
+        elif pattern == 'bachelor of computer applications':
+            return 'bca'
+        elif pattern == 'master of computer applications':
+            return 'mca'
+        else:
+            truth = re.findall(pattern, x.lower())
+            if truth:
                 return pattern
+
 
 
 
