@@ -1,6 +1,5 @@
-
+######################################################################## imports #####################################################################################
 from selenium import webdriver
-#selenium is used to automate web browsers
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 import time
@@ -10,37 +9,42 @@ from selenium.webdriver.common.by import By
 import os
 import re
 import math
+import spacy
 from sklearn.feature_extraction.text import CountVectorizer as cv
-cv=cv()
 from sklearn.metrics.pairwise import cosine_similarity as cosim
 
-#taking user inputs
+######################################################################## initializations#########################################################################
+cv=cv()  #countvectorizer
+nlp = spacy.load('en_core_web_sm') #spacy
+#################################################################################################################################################################
+
+###################################################################################### User Inputs################################################################
+
 Role=str(input('Enter job role: '))
 Country=str(input('Enter country: '))
 no_jobs=int(input('Enter no of jobs to scrape:'))
 skill_user=list(map(str, input('Enter your skills, space separated (ex: Python numpy pandas): ').split(' ')))   
-#print(skill_user)
 
-url = f'https://www.linkedin.com/jobs/search?keywords={Role}&location={Country}'
+#################################################################################################################################################################
 
-#preventing chrome browser from popping up while scraping
+
+url = f'https://www.linkedin.com/jobs/search?keywords={Role}&location={Country}' #url f-string to hit everytime.
+
+############################################# chrome browser automated settings + hitting the url ###########################################################################
 chrome_options = webdriver.ChromeOptions()
-#chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
 chrome_options.add_argument("--headless")
 chrome_options.add_argument("--disable-dev-shm-usage")
 chrome_options.add_argument("--no-sandbox")
-
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()),options=chrome_options)
-#driver = webdriver.Chrome(r"C:\Users\User\Desktop\PROGRAM_FILES\chromedriver.exe")
 driver.get(url)
-
 driver.maximize_window() 
 driver.minimize_window() 
 driver.maximize_window() 
 driver.switch_to.window(driver.current_window_handle)
 driver.implicitly_wait(10)
+#######################################################################################################################################################################
 
-#enabling scrolling till page limit
+################################################################# enabling scrolling till page limit ##################################################################
 i = 2
 while i <= math.floor(0.07*(no_jobs//10)): 
     driver.execute_script('window.scrollTo(0, document.body.scrollHeight);')
@@ -54,13 +58,11 @@ while i <= math.floor(0.07*(no_jobs//10)):
          pass
 
 src=driver.page_source
-soup = BeautifulSoup(src, 'lxml')
+soup = BeautifulSoup(src, 'lxml') # preparing the soup
+##########################################################################################################################################################################
 
-
-
+########################################################### scraping job links, names, roles, links etc ###############################################################
 job_links=[]
-
-#scraping job names, roles, location
 names=soup.find_all('h4',{'class':'base-search-card__subtitle'})
 roles=soup.find_all('span',{'class':'sr-only'})
 location=soup.find_all('span',{'class':'job-search-card__location'})
@@ -76,36 +78,28 @@ for item in range(len(names)):
 names=[i.get_text() for i in names]
 roles=[i.get_text() for i in roles]
 location=[i.get_text() for i in location]
-print(names)
 
+#################################################################################################################################################################################
 
+################################################################### helper functions #########################################################################
 
-import spacy
-
-# load pre-trained model
-nlp = spacy.load('en_core_web_sm')
-
-#function to extract skills from job description corpus
 def extract_skills(resume_text):
+    
+    """
+    function to extract skills from job descriptions,
+    after matching with pre-loaded corpus of all possible
+    skills
+    """
     nlp_text = nlp(resume_text)
-
-    # removing stop words and implementing word tokenization
     tokens = [token.text for token in nlp_text if not token.is_stop]
-    
-    # reading the csv file
     data = pd.read_csv(r"https://raw.githubusercontent.com/ayanatherate/findmyjobbot/main/skills%20-%20skills%20(1).csv") 
-    
-    # extract values
     skills = list(data.columns.values)
-    
     skillset = []
-    
     # check for one-grams
     for token in tokens:
         if token.lower() in skills:
             skillset.append(token)
-    
-    # check for bi-grams and tri-grams 
+     # check for bi-grams and tri-grams 
     for token in nlp_text.noun_chunks:
         token = token.text.lower().strip()
         if token in skills:
@@ -113,8 +107,13 @@ def extract_skills(resume_text):
     
     return [i.capitalize() for i in set([i.lower() for i in skillset])]
 
-#function to scrape educational qualification requirements from job description corpus
+
 def extract_edu_qualf(x):
+    
+    """
+     function to extract educational qualifications using string/pattern matching
+     """
+    
     find=['Bachelor of Engineering','Master of Engineering','bachelor of technology','master of technology','BTech','MTech','Bsc','Msc'
           'Bachelor of Business Administration','Master of Business Administration','bba','mba'
          'bachelor of computer applications','master of computer applications','bca','mca','bcom'
