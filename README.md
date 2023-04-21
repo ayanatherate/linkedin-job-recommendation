@@ -12,7 +12,8 @@
 git clone https://github.com/ayanatherate/findmyjobbot.git
 cd findmyjobbot
 pip install -r requirements.txt
-python linkedinj.py
+python -m spacy download en_core_web_sm
+python main.py
 ```
 <br>
 
