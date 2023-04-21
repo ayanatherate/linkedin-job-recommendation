@@ -14,7 +14,7 @@ def extract_skills(resume_text:str) -> list[str]:
     after matching with pre-loaded corpus of all possible
     skills
     """
-    nlp = spacy.load(r"C:\Users\Ayan.Sardar\Downloads\findmyjobbot-main\en_core_web_sm-3.2.0") 
+    nlp = spacy.load(r"files/en_core_web_sm/en_core_web_sm_3-2-0") 
     nlp_text = nlp(resume_text)
     tokens = [token.text for token in nlp_text if not token.is_stop]
     data = pd.read_csv(r"https://raw.githubusercontent.com/ayanatherate/findmyjobbot/main/files/skills_corp.csv.csv") 
