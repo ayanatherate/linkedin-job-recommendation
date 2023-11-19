@@ -16,17 +16,17 @@ def extract_edu_qualf(x:str):
         x=x.replace('.','')
         truth=re.findall(pattern,x.lower())
         if truth:
-            if pattern=='bachelor of Engineering':
+            if pattern=='bachelor of engineering':
                 return 'btech'
-            elif pattern=='master of Engineering':
+            elif pattern=='master of engineering':
                 return 'mtech'
             elif pattern=='bachelor of technology':
                 return 'btech'
             elif pattern=='master of technology':
                 return 'mtech'
-            elif pattern=='Bachelor of Business Administration':
+            elif pattern=='bachelor of business administration':
                 return 'bba'
-            elif pattern=='Master of Business Administration':
+            elif pattern=='master of business administration':
                 return 'mba'
             elif pattern=='bachelor of computer applications':
                 return 'bca'
