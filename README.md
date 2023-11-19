@@ -1,4 +1,5 @@
-<h2> Edit 2023: As of 2023, this tool still works, however it is in major need of Code restructure, cleaning and maintenance. Also, we are no longer College students, we don't write Spagghetish code like this anymore lol</h2>
+<h1> Important </h1>
+<h4> Edit 2023: As of 2023, this tool still works, however it is in major need of Code restructure, cleaning and maintenance. Also, we are no longer College students, we don't write Spagghetish code like this anymore lol</h4>
 
 
 <h2> Intuition </h2>
