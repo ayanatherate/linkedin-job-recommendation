@@ -1,3 +1,6 @@
+<h2> Edit 2023: As of 2023, this tool still works, however it is in major need of Code restructure, cleaning and maintenance. Also, we are no longer College students, we don't write Spagghetish code like this anymore lol</h2>
+
+
 <h2> Intuition </h2>
 
 <h4> Keeping track of the latest openings for a particular role and location might be gruesome. As also, manually reading long JD's to find out whether the skillset/experience required matches your expectations can also add more to the platter. Thus built a bot which automates this entire process, it returns  a csv containing the most matched jobs (along with job apply link) according to skills (Count Vectorizer + Cosine Similarity), sorted by the most recent date of job posting. </h3>
